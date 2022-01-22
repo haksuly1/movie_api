@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>MOVIE APP DOCUMENTATION PAGE</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1>Documentation page for my Movie App</h1>
+
+    <p>
+      This project is about building the server-side component of a “movies” web
+      application.
+    </p>
+
+    <p>
+      The web application will provide users with access to the following
+      information:
+    </p>
+    - movies<br />
+    - directors and<br />
+    - genres.
+
+    <p>
+      Users will be able to sign up, update their personal information, and
+      create a list of their favorite movies.
+    </p>
+
+    <h2>List of URL endpoints, defining Request, URL and Response.</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">S/N</th>
+          <th scope="col">REQUEST</th>
+          <th scope="col">URL</th>
+          <th scope="col">RESPONSE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>GET</td>
+          <td>/movies</td>
+          <td>A JSON object holding data about all movies. 
+              Returns a list of all movies to the user.
+            </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>GET</td>
+          <td>/movies/:Title</td>
+          <td>
+            A JSON object holding data about a movie containing.
+            Returns data about a movie by title. 
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>GET</td>
+          <td>/genre/:Name</td>
+          <td>
+            A JSON object holding data about a movie with genre and director.
+            Returns data about a movie with genre information by name.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>GET</td>
+          <td>/director/:Name</td>
+          <td>
+            A JSON object holding data about a movie with director information.
+            Returns data about a movie with director information by name.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>GET</td>
+          <td>/documentation</td>
+          <td>
+            A HTML Page holding information about myFlixDB App.
+            Returns documentations about myFlixDb App.  
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>GET</td>
+          <td>/users/:Username</td>
+          <td>
+            A JSON data holding information about a user. 
+          </td>Returns data about a a user by name. It also returns information about an updated user by name or a user that was deleted by username.
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>GET</td>
+          <td>/users/:Username/movies/:MovieI</td>
+          <td>
+            A JSON data holding information about a movie that was added to a user's list of favorites.
+            It also used to display movies thatb was deleted from user's list of favorites.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>GET</td>
+          <td>/movies/:Title</td>
+          <td>
+            A JSON object holding data about a movie containing title.
+            Returns data about a movie and title. 
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td>GET</td>
+          <td>/genre/:Name/:director/:Name/imagepath</td>
+          <td>
+            A JSON object holding data about a movie genre, direcor by name and the imagepath. 
+            Returns a mnovie showing the genre, director name and ImagePath. 
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td>GET</td>
+          <td>/movies/:Title/director/:Name/:Bio/:Birth//:death</td>
+          <td>
+            A JSON object holding data about a movie containing title director name, Bio including birth and death information.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">11</th>
+          <td>POST</td>
+          <td>/users</td>
+          <td>
+            A text message showing name, password, email, birthdate and favourite movies of user that was registered.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">12</th>
+          <td>PUT</td>
+          <td>/users</td>
+          <td>
+            A text message showing the user details that was updated. 
+            Allow new user to register.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">13</th>
+          <td>PUT</td>
+          <td>/users/:Username</td>
+          <td>
+            A text message showing the user details that was updated. 
+            Allow users to update their information.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">14</th>
+          <td>DELETE</td>
+          <td>/users/[id]</td>
+          <td>
+            A text message indicating if the user was removed successfully.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
