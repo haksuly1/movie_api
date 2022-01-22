@@ -25,5 +25,13 @@
     "eslint": "^8.7.0"
   },
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haksuly1/movie_api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haksuly1/movie_api/issues"
+  },
+  "homepage": "https://github.com/haksuly1/movie_api#readme",
   "description": ""
 }
