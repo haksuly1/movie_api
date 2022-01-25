@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const jwtSecret = "your_jwt_secret"; // This has to be the same key used in the JWTStrategy
 
 const jwt = require("jsonwebtoken"),

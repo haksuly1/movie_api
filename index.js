@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 const express = require("express"),
 bodyParser = require("body-parser"),
 uuid = require("uuid");
