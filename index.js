@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const express = require("express"),
 bodyParser = require("body-parser"),
 uuid = require("uuid");
@@ -19,7 +21,7 @@ const Directors = Models.Directors;
 
 //mongoose.connect("mongodb+srv://haksuly1DB:MongoDb1@cluster0.zuz4t.mongodb.net/haksuly1DB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
-//mongoose.connect("process.env.CONNECTION_URI", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //mongoose.connect("mongodb://localhost:27017/myFlixDB", { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -41,7 +43,9 @@ app.get("/", (req, res) => {
 });
 
 //Get all movies - Mongoose Models
-app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) => {
+app.get("/movies", 
+passport.authenticate("jwt", { session: false }), 
+(req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies); 
@@ -53,7 +57,9 @@ app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) 
 });
 
 // Get all users - Mongoose Models
-app.get("/users", passport.authenticate("jwt", { session: false }), (req, res) => {
+app.get("/users", 
+passport.authenticate("jwt", { session: false }), 
+(req, res) => {
   Users.find()
     .then((users) => {
       res.status(201).json(users);
@@ -101,49 +107,51 @@ app.get("/director/:Name", passport.authenticate("jwt", { session: false }), (re
 });
 
 //Allow users to register - Mongoose Models
-app.post("/users", 
+app.post(
+  "/users",
+  [
+    check("Username", "Username is required").isLength({ min: 5 }),
+    check(
+      "Username",
+      "Username contains non alphanumeric characters - not allowed."
+    ).isAlphanumeric(),
+    check("Password", "Password is required").not().isEmpty(),
+    check("Email", "Email does not appear to be valid").isEmail(),
+  ],
+  (req, res) => {
+    let errors = validationResult(req);
 
-[
-  check("Username", "Username is required").isLength({min:5}),
-  check("Username", "Username contains non alphanumeric characters - not allowed.").isAlphanumeric(),
-  check("Password", "Password is required").not().isEmpty(),
-  check("Email", "Email does not appear to be valid").isEmail()
-], (req, res) => { 
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
 
-// check the validation object for errors
-let errors = validationResult(req);
-
-if (!errors.isEmpty()) {
-  return res.status(422).json({ errors: errors.array() });
-}
-passport.authenticate("jwt", { session: false }), (req, res) => {
-  let hashedPassword = Users.hashPassword(req.body.Password); //Hash Password
-  Users.findOne({ Username: req.body.Username }) // Search to see if a user with the requested username already exists
-  .then((user) => {
-    if (user) {
-      //If the user is found, send a response that it already exists
-      return res.status(400).send(req.body.Username + "already exists")
-    } else {
-      Users.create({
-        Username: req.body.Username,
-        Password: req.body.Password,
-        Email: req.body.Email,
-        Birthday: req.body.Birthday
-      })
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    Users.findOne({ Username: req.body.Username })
       .then((user) => {
-        res.status(201).json(user);
+        if (user) {
+          return res.status(400).send(req.body.Username + " already exists");
+        } else {
+          Users.create({
+            Username: req.body.Username,
+            Password: hashedPassword,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday,
+          })
+            .then((user) => {
+              res.status(201).json(user);
+            })
+            .catch((error) => {
+              console.error(error);
+              res.status(500).send("Error: " + error);
+            });
+        }
       })
       .catch((error) => {
         console.error(error);
         res.status(500).send("Error: " + error);
       });
-    }
-  })
-  .catch((error) => {
-    console.error(error);
-    res.status(500).send("Error: " + error);
-  });
-}});
+  }
+);
 
 //FETCH DOCUMENTATION PAGE
 app.get("/documentation", passport.authenticate("jwt", { session: false }), (req, res) => {
