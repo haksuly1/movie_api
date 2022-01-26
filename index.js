@@ -43,20 +43,6 @@ app.get("/", (req, res) => {
   res.send("Welcome to myFlix!");
 });
 
-//Get all movies - Mongoose Models
-app.get("/movies", 
-passport.authenticate("jwt", { session: false }), 
-(req, res) => {
-  Movies.find()
-    .then((movies) => {
-      res.status(201).json(movies); 
-    })
-    .catch((err) => { 
-      console.error(err);
-      res.status(500).send("Error: " + err);
-    });
-});
-
 
 //THIS CODES REMOVES PASSPORT AUTHENTICATION
 app.get("/movies", function (req, res) {
@@ -71,8 +57,23 @@ app.get("/movies", function (req, res) {
 });
 
 
-
 /*
+//Get all movies - Mongoose Models
+app.get("/movies", 
+passport.authenticate("jwt", { session: false }), 
+(req, res) => {
+  Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies); 
+    })
+    .catch((err) => { 
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
+});
+*/
+
+
 // Get all users - Mongoose Models
 app.get("/users", 
 passport.authenticate("jwt", { session: false }), 
@@ -86,9 +87,6 @@ passport.authenticate("jwt", { session: false }),
       res.status(500).send("Error: " + err);
     });
 });
-*/
-
-
 
 //GET JSON movie when looking for specific title - Mongoose Models
 app.get("/movies/:Title", passport.authenticate("jwt", { session: false }), (req, res) => {
