@@ -57,6 +57,22 @@ passport.authenticate("jwt", { session: false }),
     });
 });
 
+
+//THIS CODES REMOVES PASSPORT AUTHENTICATION
+app.get("/movies", function (req, res) {
+  Movies.find()
+    .then(function (movies) {
+      res.status(201).json(movies);
+    })
+    .catch(function (error) {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    });
+});
+
+
+
+/*
 // Get all users - Mongoose Models
 app.get("/users", 
 passport.authenticate("jwt", { session: false }), 
@@ -70,6 +86,9 @@ passport.authenticate("jwt", { session: false }),
       res.status(500).send("Error: " + err);
     });
 });
+*/
+
+
 
 //GET JSON movie when looking for specific title - Mongoose Models
 app.get("/movies/:Title", passport.authenticate("jwt", { session: false }), (req, res) => {
