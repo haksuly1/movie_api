@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-const express = require("express"),
-bodyParser = require("body-parser"),
-uuid = require("uuid");
-
+const express = require("express");
 const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const uuid = require("uuid");
+
+
 //const methodOverride = require("method-override");
 const app = express();
 const mongoose = require("mongoose");
@@ -29,15 +30,21 @@ mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifie
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//Cors
 const cors = require("cors");
 app.use(cors()); //This code requires CORS
-let auth = require("./auth")(app); //Require and imports auth.js 
-const passport = require("passport"); //Require and import passport.js
-require("./passport");
 
 //log requests to server
 app.use(morgan("common"));
 app.use("/", express.static("public"));
+
+
+//Authentication & Authorisation
+let auth = require("./auth")(app); //Require and imports auth.js 
+const passport = require("passport"); //Require and import passport.js
+require("./passport");
+
 
 app.get("/", (req, res) => {
   res.send("Welcome to myFlix!");
@@ -58,7 +65,7 @@ app.get("/movies", function (req, res) {
 
 
 /*
-//Get all movies - Mongoose Models
+//Get all movies with authentication - Mongoose Models
 app.get("/movies", 
 passport.authenticate("jwt", { session: false }), 
 (req, res) => {
