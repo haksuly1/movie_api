@@ -31,12 +31,14 @@ mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifie
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 //Cors
 const cors = require("cors");
 app.use(cors()); //This code requires CORS
 
 //log requests to server
 app.use(morgan("common"));
+Access-Control-Allow-Origin: 
 app.use("/", express.static("public"));
 
 
