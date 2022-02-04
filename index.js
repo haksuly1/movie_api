@@ -31,12 +31,12 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Cors
-//const cors = require("cors");
-//app.use(cors()); //This code requires CORS
+//Use Cors
+const cors = require("cors");
+app.use(cors()); //This code requires CORS
 
 
-
+/*
 // Use Cors
 const cors = require("cors");
 let allowedOrigins = ["http://localhost:8080", "http://testsite.com"];
@@ -51,7 +51,7 @@ app.use(cors({
         return callback(null, true);
     }
 }));
-
+*/
 
 //log requests to server
 app.use(morgan("common"));
