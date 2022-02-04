@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 const express = require("express");
 const morgan = require("morgan");
@@ -54,7 +55,7 @@ app.use(cors({
 
 //log requests to server
 app.use(morgan("common"));
-Access-Control-Allow-Origin: 
+Access-Control-Allow-Origin; 
 app.use("/", express.static("public"));
 
 
