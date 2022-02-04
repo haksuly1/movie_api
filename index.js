@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -28,14 +29,32 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+/*
 //Cors
 const cors = require("cors");
 app.use(cors()); //This code requires CORS
+*/
+
+
+// Use Cors
+const cors = require("cors");
+let allowedOrigins = ["http://localhost:8080", "http://testsite.com"];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isn’t found on the list of allowed origins
+            let message = "The CORS policy for this application doesn’t allow access from origin " + origin;
+            return callback(new Error(message), false);
+        }
+        return callback(null, true);
+    }
+}));
+
 
 //log requests to server
 app.use(morgan("common"));
-//Access-Control-Allow-Origin: 
+Access-Control-Allow-Origin: 
 app.use("/", express.static("public"));
 
 
