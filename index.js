@@ -63,7 +63,7 @@ app.get("/movies", function (req, res) {
 });
 
 
-/*
+
 //Get all movies with authentication - Mongoose Models
 app.get("/movies", 
 passport.authenticate("jwt", { session: false }), 
@@ -77,7 +77,7 @@ passport.authenticate("jwt", { session: false }),
       res.status(500).send("Error: " + err);
     });
 });
-*/
+
 
 
 // Get all users - Mongoose Models
