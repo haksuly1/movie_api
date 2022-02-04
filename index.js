@@ -70,16 +70,14 @@ app.get("/", (req, res) => {
 });
 
 
-//THIS CODES REMOVES PASSPORT AUTHENTICATION
-app.get("/movies", function (req, res) {
+//Get ALL Movies
+app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) => {
   Movies.find()
-    .then(function (movies) {
-      res.status(201).json(movies);
-    })
-    .catch(function (error) {
-      console.error(error);
-      res.status(500).send("Error: " + error);
-    });
+      .then((movies) => { res.status(201).json(movies) })
+      .catch((err) => {
+          console.error(err);
+          res.status(500).sent("Error" + err)
+      })
 });
 
 
