@@ -222,6 +222,12 @@
     "wrappy": "^1.0.2",
     "yallist": "^3.1.1"
   },
+
+  "engines": {
+    "node": "16.13.2", 
+    "npm": "8.4.1" 
+ },
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm run build",
