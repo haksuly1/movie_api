@@ -232,7 +232,7 @@ passport.authenticate("jwt", { session: false }), (req, res) => {
 }});
 
 //Delete movie from user's favorite movie list
-app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.delete("/users/:Username/movies/:MovieID", passport.authenticate("jwt", { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
       $pull: { FavoriteMovies: req.params.MovieID }
   },
@@ -240,7 +240,7 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { se
       (err, updatedUser) => {
           if (err) {
               console.error(err);
-              res.status(500).send('Error: ' + err);
+              res.status(500).send("Error: " + err);
           } else {
               res.json(updatedUser);
           }
@@ -248,18 +248,18 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { se
 });
 
 //Delete user by username / Allow user to de-register
-app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.delete("/users/:Username", passport.authenticate("jwt", { session: false }), (req, res) => {
   Users.findOneAndRemove({ Username: req.params.Username })
       .then((user) => {
           if (!user) {
-              res.status(400).send(req.params.Username + ' was not found');
+              res.status(400).send(req.params.Username + " was not found");
           } else {
-              res.status(200).send(req.params.Username + ' was deleted.');
+              res.status(200).send(req.params.Username + " was deleted.");
           }
       })
       .catch((err) => {
           console.error(err);
-          res.status(500).send('Error: ' + err);
+          res.status(500).send("Error: " + err);
       });
 });
 
