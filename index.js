@@ -35,7 +35,7 @@ app.use(cors()); //This code requires CORS
 
 //log requests to server
 app.use(morgan("common"));
-Access-Control-Allow-Origin: 
+//Access-Control-Allow-Origin: 
 app.use("/", express.static("public"));
 
 
