@@ -183,6 +183,7 @@
     "sax": "^1.2.4",
     "semver": "^5.7.1",
     "send": "^0.17.2",
+    "serve": "^13.0.2",
     "serve-static": "^1.14.2",
     "set-blocking": "^2.0.0",
     "setprototypeof": "^1.2.0",
@@ -221,10 +222,18 @@
     "wrappy": "^1.0.2",
     "yallist": "^3.1.1"
   },
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
+
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/haksuly1/movie_api.git"
