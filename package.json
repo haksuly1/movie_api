@@ -222,23 +222,10 @@
     "wrappy": "^1.0.2",
     "yallist": "^3.1.1"
   },
-
-  "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
-    },
-
-/*
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-*/
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/haksuly1/movie_api.git"
