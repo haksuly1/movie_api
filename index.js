@@ -252,11 +252,12 @@ app.use((err, req, res, next) => {
   res.status(500).send("An error has been detected")
 });
 
+/*
 const port = process.env.PORT || 8080;
 app.listen(port, "0.0.0.0",() => {
  console.log("Listening on Port " + port);
 });
-
+*/
 
 
 
