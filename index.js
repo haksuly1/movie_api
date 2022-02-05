@@ -39,8 +39,9 @@ app.use(cors()); //This code requires CORS
 app.use(morgan("common"));
 
 //Access-Control-Allow-Origin; 
-app.use("/", express.static("public"));
-
+// Use Express to return all static files in public folder
+app.use(express.static("public"));
+//app.use("/", express.static("public"));
 
 //Authentication & Authorisation
 let auth = require("./auth")(app); //Require and imports auth.js 
