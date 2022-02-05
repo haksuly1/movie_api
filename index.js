@@ -62,11 +62,6 @@ app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) 
     });
 });
 
-//FETCH DOCUMENTATION PAGE
-app.get("/documentation", passport.authenticate("jwt", { session: false }), (req, res) => {
-  res.sendFile("public/documentation.html", { root: __dirname });
-});
-
 // Get all users - Mongoose Models
 app.get("/users", 
 passport.authenticate("jwt", { session: false }), (req, res) => {
@@ -212,6 +207,11 @@ app.post("/users/:Username/movies/:MovieID", passport.authenticate("jwt", { sess
               res.json(updatedUser);
           }
       });
+});
+
+//FETCH DOCUMENTATION PAGE
+app.get("/documentation", passport.authenticate("jwt", { session: false }), (req, res) => {
+  res.sendFile("public/documentation.html", { root: __dirname });
 });
 
 //Delete movie from user's favorite movie list
