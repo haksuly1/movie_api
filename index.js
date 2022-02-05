@@ -49,7 +49,7 @@ const passport = require("passport"); //Require and import passport.js
 require("./passport");
 
 app.get("/", (req, res) => {
-  res.send("Welcome to myFlix!");
+res.send("Welcome to myFlix!");
 });
 
 //Get all movies with authentication - Mongoose Models
