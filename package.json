@@ -140,6 +140,7 @@
     "negotiator": "^0.6.2",
     "node-addon-api": "^3.2.1",
     "node-pre-gyp": "^0.15.0",
+    "nodemon": "^2.0.15",
     "nopt": "^4.0.3",
     "npm-bundled": "^1.1.2",
     "npm-normalize-package-bin": "^1.0.1",
