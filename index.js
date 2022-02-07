@@ -18,6 +18,9 @@ const Users = Models.User;
 const Genres = Models.Genre;
 const Directors = Models.Directors;
 
+
+
+//mongoose.connect("mongodb+srv://haksuly1:MongoDbAtlas1@cluster0.mf0aq.mongodb.net/myFlixDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 const db_url = process.env.CONNECTION_URI || "mongodb+srv://haksuly1:MongoDbAtlas1@cluster0.mf0aq.mongodb.net/myFlixDB?retryWrites=true&w=majority";
 mongoose.connect( db_url, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -57,8 +60,7 @@ app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) 
 });
 
 // Get all users - Mongoose Models
-app.get("/users", 
-passport.authenticate("jwt", { session: false }), (req, res) => {
+app.get("/users", passport.authenticate("jwt", { session: false }), (req, res) => {
   Users.find()
     .then((users) => { res.status(201).json(users); })
     .catch((err) => {
