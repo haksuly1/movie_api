@@ -1,1 +1,2 @@
-git add .gitignore 
+/node_modules
+/.parcel-cache
