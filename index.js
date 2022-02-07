@@ -33,6 +33,11 @@ mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifie
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+let auth = require("./auth")(app); //Require and imports auth.js 
+
+//Authentication & Authorisation
+const passport = require("passport"); //Require and import passport.js
+require("./passport");
 
 //Use Cors
 const cors = require("cors");
@@ -46,20 +51,15 @@ app.use(morgan("common"));
 app.use(express.static("public"));
 //app.use("/", express.static("public"));
 
-//Authentication & Authorisation
-let auth = require("./auth")(app); //Require and imports auth.js 
-const passport = require("passport"); //Require and import passport.js
-require("./passport");
-
 app.get("/", (req, res) => {
 res.send("Welcome to myFlix!");
 });
 
-
 //Get all movies with authentication - Mongoose Models
 app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) => {
   Movies.find()
-    .then((movies) => { res.status(201).json(movies); })
+    .then((movies) => { res.status(201).json(movies); 
+    })
     .catch((err) => { 
       console.error(err);
       res.status(500).send("Error: " + err);
