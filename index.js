@@ -18,13 +18,8 @@ const Users = Models.User;
 const Genres = Models.Genre;
 const Directors = Models.Directors;
 
-
-
-//mongoose.connect("mongodb+srv://haksuly1:MongoDbAtlas1@cluster0.mf0aq.mongodb.net/myFlixDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
-
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
-//mongoose.connect("mongodb://localhost:27017/myFlixDB", { useNewUrlParser: true, useUnifiedTopology: true });
+const db_url = process.env.CONNECTION_URI || "mongodb+srv://haksuly1:MongoDbAtlas1@cluster0.mf0aq.mongodb.net/myFlixDB?retryWrites=true&w=majority";
+mongoose.connect( db_url, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 app.use(bodyParser.json());
