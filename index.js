@@ -1,6 +1,8 @@
 
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+const mongoose = require("mongoose");
+const Models = require("./models.js");
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -8,17 +10,14 @@ const uuid = require("uuid");
 
 //const methodOverride = require("method-override");
 const app = express();
-const mongoose = require("mongoose");
-const Models = require("./models.js");
+
 const { check, validationResult } = require("express-validator");
 
 //Mongoose models
 const Movies = Models.Movie;
 const Users = Models.User;
-const Genres = Models.Genre;
-const Directors = Models.Directors;
-
-
+//const Genres = Models.Genre;
+//const Directors = Models.Directors;
 
 //mongoose.connect("mongodb+srv://haksuly1:MongoDbAtlas1@cluster0.mf0aq.mongodb.net/myFlixDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
