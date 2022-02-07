@@ -1,6 +1,10 @@
 const mongoose = require("mongoose"); 
 const bcrypt = require("bcrypt");
 
+let Movie = mongoose.model("Movie", movieSchema);
+let User = mongoose.model("User", userSchema);
+
+
 let movieSchema = mongoose.Schema({
 
     Title: {type: String, require: true},
