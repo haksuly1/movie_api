@@ -3,6 +3,15 @@
 /* eslint-disable no-unused-vars */
 const mongoose = require("mongoose");
 const Models = require("./models.js");
+const { check, validationResult } = require("express-validator");
+
+//Mongoose models
+const Movies = Models.Movie;
+const Users = Models.User;
+const Actors = Models.Actor;
+//const Genres = Models.Genre;
+//const Directors = Models.Directors;
+
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -11,13 +20,9 @@ const uuid = require("uuid");
 //const methodOverride = require("method-override");
 const app = express();
 
-const { check, validationResult } = require("express-validator");
 
-//Mongoose models
-const Movies = Models.Movie;
-const Users = Models.User;
-//const Genres = Models.Genre;
-//const Directors = Models.Directors;
+
+
 
 //mongoose.connect("mongodb+srv://haksuly1:MongoDbAtlas1@cluster0.mf0aq.mongodb.net/myFlixDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -42,13 +47,13 @@ require("./passport");
 const cors = require("cors");
 app.use(cors()); //This code requires CORS
 
-//log requests to server
-app.use(morgan("common"));
-
 //Access-Control-Allow-Origin; 
 // Use Express to return all static files in public folder
 app.use(express.static("public"));
 //app.use("/", express.static("public"));
+
+//log requests to server
+app.use(morgan("common"));
 
 app.get("/", (req, res) => {
 res.send("Welcome to myFlix!");
