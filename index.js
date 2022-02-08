@@ -71,7 +71,7 @@ app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) 
     });
 });
 
-/*
+
 // Get all users - Mongoose Models
 app.get("/users", passport.authenticate("jwt", { session: false }), (req, res) => {
   Users.find()
@@ -81,7 +81,7 @@ app.get("/users", passport.authenticate("jwt", { session: false }), (req, res) =
       res.status(500).send("Error: " + err);
     })
 });
-*/
+
 
 // Get a user by username - Mongoose Models
 app.get("/users/:Username", passport.authenticate("jwt", { session: false }), (req, res) => {
