@@ -37,17 +37,15 @@ mongoose.connect("mongodb+srv://haksuly1:MongoDbAtlas1@cluster0.mf0aq.mongodb.ne
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-let auth = require("./auth")(app); //Require and imports auth.js 
-
-//Authentication & Authorisation
-const passport = require("passport"); //Require and import passport.js
-require("./passport");
-
 
 //Use Cors
 const cors = require("cors");
 app.use(cors()); //This code requires CORS
 
+//Authentication & Authorisation
+const passport = require("passport"); //Require and import passport.js
+require("./passport");
+let auth = require("./auth")(app); //Require and imports auth.js 
 
 /*
 let allowedOrigins = ["http://localhost:8080", "https://haksuly1movieapp.herokuapp.com/login", "http://localhost:1234"];
