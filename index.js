@@ -49,6 +49,7 @@ const cors = require("cors");
 app.use(cors()); //This code requires CORS
 */
 
+const cors = require("cors");
 let allowedOrigins = ["http://localhost:8080", "https://haksuly1movieapp.herokuapp.com/", "http://localhost:1234"];
 app.use(cors({
   origin: (origin, callback) => {
