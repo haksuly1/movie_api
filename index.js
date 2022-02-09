@@ -15,7 +15,6 @@ const Actors = Models.Actor;
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 const uuid = require("uuid");
 
 //const methodOverride = require("method-override");
@@ -44,13 +43,14 @@ let auth = require("./auth")(app); //Require and imports auth.js
 const passport = require("passport"); //Require and import passport.js
 require("./passport");
 
-/*
+
 //Use Cors
 const cors = require("cors");
+let allowedOrigins = ["http://localhost:8080", "https://haksuly1movieapp.herokuapp.com/login", "http://localhost:1234"];
 app.use(cors()); //This code requires CORS
-*/
 
 
+/*
 let allowedOrigins = ["http://localhost:8080", "https://haksuly1movieapp.herokuapp.com/login", "http://localhost:1234"];
 app.use(cors({
   origin: (origin, callback) => {
@@ -62,6 +62,7 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+*/
 
 //Access-Control-Allow-Origin; 
 // Use Express to return all static files in public folder
