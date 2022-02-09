@@ -59,6 +59,7 @@ app.get("/", (req, res) => {
 res.send("Welcome to myFlix!");
 });
 
+/*
 //GET ALL MOVIES WITHOUT AUTHENTICATION 
 app.get("/movies", function (req, res) { 
   Movies.find()
@@ -70,9 +71,9 @@ app.get("/movies", function (req, res) {
       res.status(500).send("Error: " + err);
     });
 });
+*/
 
 
-/*
 //DISABLED UNTILL USERS COULD BE AUTHENTICATED
 //Get all movies with authentication - Mongoose Models
 app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) => {
@@ -84,7 +85,7 @@ app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) 
       res.status(500).send("Error: " + err);
     });
 });
-*/
+
 
 // Get all users - Mongoose Models
 app.get("/users", passport.authenticate("jwt", { session: false }), (req, res) => {
