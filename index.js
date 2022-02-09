@@ -46,7 +46,6 @@ require("./passport");
 
 //Use Cors
 const cors = require("cors");
-let allowedOrigins = ["http://localhost:8080", "https://haksuly1movieapp.herokuapp.com/login", "http://localhost:1234"];
 app.use(cors()); //This code requires CORS
 
 
