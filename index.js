@@ -45,7 +45,7 @@ require("./passport");
 
 //Use Cors
 const cors = require("cors");
-app.use(cors()); //This code requires CORS
+app.use(cors(("AllowAllHeaders"))); //This code requires CORS
 
 Access-Control-Allow-Origin; 
 // Use Express to return all static files in public folder
