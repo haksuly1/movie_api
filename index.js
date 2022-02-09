@@ -15,6 +15,7 @@ const Actors = Models.Actor;
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const uuid = require("uuid");
 
 //const methodOverride = require("method-override");
@@ -49,7 +50,7 @@ const cors = require("cors");
 app.use(cors()); //This code requires CORS
 */
 
-const cors = require("cors");
+
 let allowedOrigins = ["http://localhost:8080", "https://haksuly1movieapp.herokuapp.com/", "http://localhost:1234"];
 app.use(cors({
   origin: (origin, callback) => {
