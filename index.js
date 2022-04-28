@@ -52,21 +52,6 @@ app.get("/", (req, res) => {
 res.send("Welcome to myFlix!");
 });
 
-/*
-//GET ALL MOVIES WITHOUT AUTHENTICATION 
-app.get("/movies", function (req, res) { 
-  Movies.find()
-    .then(function (movies) { 
-      res.status(201).json(movies); 
-    })
-    .catch(function (err) { 
-      console.error(err);
-      res.status(500).send("Error: " + err);
-    });
-});
-*/
-
-
 //DISABLED UNTILL USERS COULD BE AUTHENTICATED
 //Get all movies with authentication - Mongoose Models
 app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) => {
